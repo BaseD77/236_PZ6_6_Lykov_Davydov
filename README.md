@@ -35,3 +35,26 @@
 
 ## Структура проекта
 (Здесь можно вставить дерево файлов, сгенерированное командой `tree` или `find`)
+### Глава 3: Настройка проекта и работа с БД
+- **Настройка работы с 2 базами данных:**
+  - База `default` - для пользовательских данных
+  - База `utility_db` - для системных приложений (admin, auth, sessions)
+- Создан роутер `MainRouter` для распределения данных
+- Настройка форматов даты/времени для русского языка
+
+### Глава 4: Модели и валидаторы
+- **Все типы связей между моделями:**
+  1. One-to-One: UserProfile ↔ User
+  2. Many-to-Many: Tag ↔ Bb
+  3. Self-referential ForeignKey: Category (иерархия)
+  4. Self-referential Many-to-Many: Friend (друзья)
+  5. Many-to-Many through: Order ↔ OrderItem ↔ Bb
+- **Кастомные валидаторы:**
+  - validate_price_not_zero
+  - validate_phone_number
+  - validate_no_bad_words
+  - PriceRangeValidator
+  - TextLengthValidator
+- **Constraints на уровне моделей:**
+  - price_not_negative
+  - unique_title_per_rubric
